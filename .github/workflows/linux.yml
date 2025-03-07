@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - name: Checkout repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         submodules: true
 
@@ -79,7 +79,9 @@ jobs:
       run: cmake --install build_hip --prefix artifact
 
     - name: Upload
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: vs-dfttest2-Linux
         path: artifact
+        pattern: my-artifact-*
+        merge-multiple: true
